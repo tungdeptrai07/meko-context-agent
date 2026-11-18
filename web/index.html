@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MekoMemoir — Multi-Agent Shared Context &amp; Token Efficiency</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">M</div>
+      <div>
+        <h1>MekoMemoir</h1>
+        <p class="subtitle">ContextCon 2026 · Shared Datapack Memory, Self-Learning Promotion &amp; Token Efficiency (`YugabyteDB / Meko`)</p>
+      </div>
+    </div>
+    <div class="pills">
+      <span id="healthPill" class="pill ok">Meko Cloud: Checking…</span>
+      <span id="savingsPill" class="pill">Avg Token Savings: 0%</span>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="grid-two">
+      <article class="card">
+        <h2>1. Context Retrieval &amp; Token Savings (`context_search` + `track_token_usage`)</h2>
+        <div class="form-stack">
+          <div class="row-two">
+            <label>
+              Consumer Agent
+              <select id="agentInput">
+                <option value="CoderAgent">CoderAgent</option>
+                <option value="SecurityAgent">SecurityAgent</option>
+                <option value="PlannerAgent">PlannerAgent</option>
+                <option value="ReviewerAgent">ReviewerAgent</option>
+              </select>
+            </label>
+            <label>
+              Top-K Slices
+              <input id="topKInput" type="number" min="1" max="5" value="2" />
+            </label>
+          </div>
+          <label>
+            Natural-Language Context Query
+            <input id="queryInput" type="text" value="Why did Meko endpoints return 403 and how do we authenticate Bearer tokens?" />
+          </label>
+          <button id="searchBtn" type="button" class="btn primary">Retrieve Minimal Context &amp; Measure Savings</button>
+          <div id="searchBox" class="item-box muted">Run a query to compare Baseline Full-History Replay vs. Meko Context Slices.</div>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>2. Ingest New Multi-Agent Memory (`conversation_add_message` / `memory_add`)</h2>
+        <div class="form-stack">
+          <div class="row-two">
+            <label>
+              Author Agent
+              <input id="authorInput" type="text" value="AuditAgent" />
+            </label>
+            <label>
+              Memory Kind
+              <select id="kindInput">
+                <option value="memory">memory</option>
+                <option value="self_learning">self_learning</option>
+                <option value="artifact">artifact</option>
+                <option value="conversation">conversation</option>
+              </select>
+            </label>
+          </div>
+          <label>
+            Memory Title
+            <input id="titleInput" type="text" placeholder="e.g. Zero-PII Audit Log Rule" />
+          </label>
+          <label>
+            Content
+            <textarea id="contentInput" rows="2" placeholder="Describe reusable architectural rule, lesson learned, or schema constraint..."></textarea>
+          </label>
+          <button id="ingestBtn" type="button" class="btn">Store in Shared Datapack (`dp_adlc_shared_core`)</button>
+        </div>
+      </article>
+    </section>
+
+    <section class="grid-two">
+      <article class="card">
+        <h2>3. Shared Datapack Memories &amp; Self-Learning Promotion</h2>
+        <div id="memoriesList" class="stack"></div>
+      </article>
+
+      <article class="card">
+        <h2>4. Trace &amp; Audit Trail (`Show Your Work`)</h2>
+        <div id="auditList" class="stack"></div>
+      </article>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
